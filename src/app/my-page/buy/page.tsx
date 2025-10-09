@@ -20,7 +20,7 @@ const sellings = [
       productPrice: "1,750,000원",
       content: `보증서 보유\nA등급, 실착용 횟수 20회 이내`,
       viewCount: "112",
-      isLike: false,
+      isLike: null,
     },
   },
   {
@@ -33,7 +33,7 @@ const sellings = [
       productPrice: "1,500,000원",
       content: `보증서, 더스크백 보유 \nC등급`,
       viewCount: "215",
-      isLike: false,
+      isLike: null,
     },
   },
   {
@@ -46,7 +46,7 @@ const sellings = [
       productPrice: "1,200,000원",
       content: `구성품 없음 \nC등급`,
       viewCount: "314",
-      isLike: false,
+      isLike: null,
     },
   },
 ];
@@ -57,7 +57,7 @@ export default function MypageBuyPage() {
   return (
     <section className={styles["mypage-buy-page"]}>
       <p className={styles["title"]}>상품구입 내역</p>
-      <div className={styles["sell-wrap"]}>
+      <div className={styles["list-wrap"]}>
         {sells.map((item, idx) => (
           <ProductDateWrap key={idx} date={item.date} state={item.state} product={item.product} />
         ))}

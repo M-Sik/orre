@@ -22,7 +22,7 @@ const sellings = [
       productPrice: "1,750,000원",
       content: `보증서 보유\nA등급, 실착용 횟수 20회 이내`,
       viewCount: "112",
-      isLike: false,
+      isLike: null,
     },
   },
   {
@@ -35,7 +35,7 @@ const sellings = [
       productPrice: "1,750,000원",
       content: `보증서 보유\nA등급, 실착용 횟수 5회 이내`,
       viewCount: "0",
-      isLike: false,
+      isLike: null,
     },
   },
 ];
@@ -51,7 +51,7 @@ const sellCompleted = [
       productPrice: "1,500,000원",
       content: `보증서 보유\n더스트백 보유`,
       viewCount: "88",
-      isLike: false,
+      isLike: null,
     },
   },
   {
@@ -64,7 +64,7 @@ const sellCompleted = [
       productPrice: "1,200,000원",
       content: `구성품 없음\nB등급`,
       viewCount: "34",
-      isLike: false,
+      isLike: null,
     },
   },
 ];

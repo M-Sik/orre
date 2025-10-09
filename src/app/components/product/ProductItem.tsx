@@ -4,6 +4,9 @@ import { Product } from "@/types";
 import React from "react";
 import styles from "./productItem.module.scss";
 import { useRouter } from "next/navigation";
+import HeartFillIcon from "@/app/assets/icons/HeartFillIcon";
+import HeartNotFillIcon from "@/app/assets/icons/HeartNotFillIcon";
+import useLikeProductStore from "@/store/likeProductStore";
 
 type Props = {
   product: Product;
@@ -12,6 +15,8 @@ type Props = {
 };
 
 export default function ProductItem({ product, date = "", state = "" }: Props) {
+  const { deleteLike, addLike } = useLikeProductStore();
+  console.log("zzz => ", product.isLike);
   const router = useRouter();
   return (
     <div
@@ -30,6 +35,28 @@ export default function ProductItem({ product, date = "", state = "" }: Props) {
         router.push(`/product/detail?${params}`);
       }}
     >
+      {product.isLike != null && product.isLike && (
+        <div
+          className={styles["heart-icon"]}
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteLike(product.productName);
+          }}
+        >
+          <HeartFillIcon />
+        </div>
+      )}
+      {product.isLike != null && !product.isLike && (
+        <div
+          className={styles["heart-icon"]}
+          onClick={(e) => {
+            e.stopPropagation();
+            addLike(product);
+          }}
+        >
+          <HeartNotFillIcon />
+        </div>
+      )}
       <img src={product.brandImg} alt="brand" className={styles["brand-img"]} />
       {product.viewCount && <p className={styles["view-count"]}>조회수 {product.viewCount}</p>}
       <div className={styles["content-wrap"]}>

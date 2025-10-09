@@ -7,5 +7,5 @@ export type Product = {
   productPrice: string;
   content: string;
   viewCount: string;
-  isLike?: boolean;
+  isLike: boolean | null;
 };

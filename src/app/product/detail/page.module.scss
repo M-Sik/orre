@@ -127,6 +127,28 @@
         font-weight: 500;
         border: none;
       }
+      .two-btn-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        .cart-button {
+          width: 100%;
+          height: 50px;
+          background-color: white;
+          color: #ffa52a;
+          font-size: 16px;
+          font-weight: 500;
+          border: 1px solid #ffa52a;
+        }
+        .buy-button {
+          width: 100%;
+          height: 50px;
+          background-color: #ffa52a;
+          color: white;
+          font-size: 16px;
+          font-weight: 500;
+          border: none;
+        }
+      }
     }
   }
 }

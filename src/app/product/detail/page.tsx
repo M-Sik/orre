@@ -1,10 +1,13 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import React from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { Suspense, useState } from "react";
 import styles from "./page.module.scss";
+import Modal from "@/app/components/modals/Modal";
+import useCartProductStore from "@/store/cartProductStore";
 
-export default function ProductDetailPage() {
+function ProductDetailContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const brandImg = searchParams.get("brandImg") as string;
   const productImg = searchParams.get("productImg") as string;
@@ -16,7 +19,9 @@ export default function ProductDetailPage() {
   const date = searchParams.get("date");
   const state = searchParams.get("state");
 
-  console.log(brandImg, productImg, productName, productPrice, content, viewCount, isLike, date, state);
+  const [isOpen, setIsOpen] = useState(false);
+  const { addCart } = useCartProductStore();
+
   return (
     <section className={styles["product-detail-page"]}>
       <div className={styles["product-image-wrap"]}>
@@ -63,8 +68,48 @@ export default function ProductDetailPage() {
               1:1 문의
             </button>
           )}
+          {state !== "미승인" && state !== "승인완료" && state !== "배송중" && state !== "배송완료" && (
+            <div className={styles["two-btn-wrap"]}>
+              <button
+                type="button"
+                className={styles["cart-button"]}
+                onClick={() => {
+                  setIsOpen(true);
+                  addCart({
+                    brandImg,
+                    productImg,
+                    productName,
+                    productPrice,
+                    content,
+                    viewCount,
+                    isLike: null,
+                  });
+                }}
+              >
+                장바구니
+              </button>
+              <button type="button" className={styles["buy-button"]} onClick={() => alert("준비중인 서비스입니다.")}>
+                구매하기
+              </button>
+            </div>
+          )}
         </div>
       </section>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        contentText={`장바구니에 해당 주얼리가\n담겼습니다.`}
+        btnText="장바구니 내역 보기"
+        btnClick={() => router.push("/my-page/cart")}
+      />
     </section>
+  );
+}
+
+export default function ProductDetailPage() {
+  return (
+    <Suspense>
+      <ProductDetailContent />
+    </Suspense>
   );
 }
