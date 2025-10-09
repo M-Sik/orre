@@ -71,7 +71,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${pretendard.className}`}>
+      <body className={`${pretendard.className}`} style={{ paddingTop: "69.41px" }}>
         <Header />
         {children}
         <Footer />

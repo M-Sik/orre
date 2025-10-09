@@ -7,17 +7,27 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   product: Product;
+  date?: string;
+  state?: string;
 };
 
-export default function ProductItem({ product }: Props) {
+export default function ProductItem({ product, date = "", state = "" }: Props) {
   const router = useRouter();
   return (
     <div
       className={styles["product-item"]}
       onClick={() => {
-        router.push(
-          `/product/detail?brandImg=${product.brandImg}&productImg=${product.productImg}&productName=${product.productName}&productPrice=${product.productPrice}&content=${product.content}&viewCount=${product.viewCount}&isLike=${product.isLike}`
-        );
+        let params = `brandImg=${product.brandImg}&productImg=${product.productImg}&productName=${product.productName}&productPrice=${product.productPrice}&content=${product.content}&viewCount=${product.viewCount}`;
+        if (product.isLike) {
+          params += `&isLike=${product.isLike}`;
+        }
+        if (date) {
+          params += `&date=${date}`;
+        }
+        if (state) {
+          params += `&state=${state}`;
+        }
+        router.push(`/product/detail?${params}`);
       }}
     >
       <img src={product.brandImg} alt="brand" className={styles["brand-img"]} />
