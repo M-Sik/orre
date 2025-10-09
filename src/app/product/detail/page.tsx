@@ -32,7 +32,7 @@ export default function ProductDetailPage() {
         {date && state && (
           <p className={styles["date-state"]}>
             {date}
-            <span className={`${state === "미승인" ? styles["gray"] : ""}`}>{state}</span>
+            <span className={`${state === "미승인" || state === "배송완료" ? styles["gray"] : ""}`}>{state}</span>
           </p>
         )}
         {state === "미승인" && (
@@ -41,6 +41,29 @@ export default function ProductDetailPage() {
             좋은 해상도로 다시 업로드 부탁드려요!
           </p>
         )}
+        {(state === "배송중" || state === "배송완료") && (
+          <div className={styles["delivery-wrap"]}>
+            <p className={styles["order-number"]}>주문번호 087541119778</p>
+            <p className={styles["order-product-name"]}>{productName}(1건)</p>
+            <div className={styles["payment-container"]}>
+              <div className={styles["payment-wrap"]}>
+                <p>결제 금액</p>
+                <p className={styles["payment-price"]}>{productPrice}</p>
+              </div>
+              <div className={styles["payment-wrap"]}>
+                <p>결제 방법</p>
+                <p className={styles["payment-method"]}>카카오페이</p>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className={styles["btn-container"]}>
+          {(state === "배송중" || state === "배송완료") && (
+            <button className={styles["delivery-button"]} onClick={() => alert("준비중인 서비스입니다.")}>
+              1:1 문의
+            </button>
+          )}
+        </div>
       </section>
     </section>
   );

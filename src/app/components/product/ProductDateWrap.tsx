@@ -16,7 +16,7 @@ export default function ProductDateWrap({ date, state, product }: Props) {
     <div className={styles["product-date-wrap"]}>
       <p className={styles["date-text"]}>
         {date}
-        <span className={`${state === "미승인" ? styles["gray"] : ""}`}>{state}</span>
+        <span className={`${state === "미승인" || state === "배송완료" ? styles["gray"] : ""}`}>{state}</span>
       </p>
       <ProductItem product={product} date={date} state={state} />
     </div>

@@ -75,5 +75,58 @@
       padding: 10px 12px;
       line-height: 16px;
     }
+    .delivery-wrap {
+      position: relative;
+      margin-top: 13px;
+      padding: 40px 18px;
+      border-radius: 4px;
+      border: 1px solid #e0e0e0;
+      .order-number {
+        position: absolute;
+        top: 15px;
+        right: 14px;
+        font-size: 12px;
+        color: #818181;
+      }
+      .order-product-name {
+        font-size: 16px;
+        color: #222222;
+        font-weight: 600;
+      }
+      .payment-container {
+        margin-top: 20px;
+        .payment-wrap {
+          display: flex;
+          margin-top: 10px;
+          justify-content: space-between;
+          align-items: center;
+          p {
+            font-size: 14px;
+            color: #222222;
+            &.payment-price {
+              color: #ffa52a;
+              font-size: 16px;
+              font-weight: 600;
+            }
+            &.payment-method {
+              color: #818181;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+    .btn-container {
+      margin-top: 50px;
+      .delivery-button {
+        width: 100%;
+        height: 50px;
+        background-color: #ffa52a;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+      }
+    }
   }
 }
