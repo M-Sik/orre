@@ -1,0 +1,118 @@
+.main-page {
+  background-color: #fffcf7;
+  padding: 60px 20px;
+  .title-wrap {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    .title {
+      font-size: 24px;
+      font-weight: 600;
+      color: #151515;
+    }
+    .date {
+      color: #ffa52a;
+      font-size: 12px;
+      font-weight: 400;
+      padding: 2px 2px;
+      background-color: #fff1d9;
+      border-radius: 2px;
+    }
+  }
+  .gold-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    .gold-image {
+      width: 200px;
+    }
+    .price-wrap {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      .unit {
+        background-color: #ffa52a;
+        color: white;
+        border-radius: 12px;
+        padding: 4px 5px;
+        font-size: 14px;
+        width: 24.6px;
+        height: 24.6px;
+      }
+      .done-unit {
+        background-color: #ffa52a;
+        color: white;
+        border-radius: 12px;
+        padding: 4px 6px;
+        font-size: 14px;
+        width: 30.9px;
+        height: 24.5px;
+      }
+      .price {
+        font-size: 32px;
+        color: #222222;
+        font-weight: 600;
+      }
+      .done-price {
+        font-size: 28px;
+        color: #7a7986;
+        font-weight: 600;
+      }
+    }
+    .change-price-wrap {
+      display: flex;
+      align-items: center;
+      background-color: #fff2f2;
+      padding: 2px 5px;
+      margin-top: 8px;
+      color: #ff4141;
+      font-size: 12px;
+      .triangle-icon {
+        width: 8.38px;
+        height: 8.38px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+      }
+      .change-price-percent {
+        margin-left: 4px;
+      }
+    }
+  }
+  .card-container {
+    margin-top: 53px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    .card-wrap {
+      cursor: pointer;
+      background-color: white;
+      padding: 26px 9px 9px 16px;
+      border-radius: 6px;
+      border: 2px solid #ffa52a;
+      .card-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffa52a;
+        line-height: 16px;
+      }
+      .card-content {
+        margin-top: 9px;
+        font-size: 14px;
+      }
+      .image-wrap {
+        display: flex;
+        justify-content: end;
+        margin-top: 8px;
+        .bag-image {
+          height: 80px;
+        }
+        .money-image {
+          height: 80px;
+        }
+      }
+    }
+  }
+}
