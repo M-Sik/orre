@@ -32,9 +32,13 @@ function ProductDetailContent() {
   );
 
   useEffect(() => {
-    if (likeProducts.some((item) => item.productName === productName)) {
+    console.log("여기?0", productName);
+    console.log(likeProducts);
+    if (likeProducts.some((item) => item.productName.replaceAll("\n", "") === productName.replaceAll("\n", ""))) {
+      console.log("여기?1");
       setIsLikeState(true);
     } else {
+      console.log("여기?2");
       setIsLikeState(false);
     }
   }, []);

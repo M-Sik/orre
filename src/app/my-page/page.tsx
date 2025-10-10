@@ -1,9 +1,11 @@
 "use client";
 
+import styles from "./page.module.scss";
+
 export default function MypagePage() {
   return (
-    <div>
-      <h1>MypagePage</h1>
-    </div>
+    <section className={styles["mypage-page"]}>
+      <p className={styles["title"]}>마이페이지</p>
+    </section>
   );
 }
