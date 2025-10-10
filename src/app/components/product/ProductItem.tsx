@@ -16,7 +16,7 @@ type Props = {
 
 export default function ProductItem({ product, date = "", state = "" }: Props) {
   const { deleteLike, addLike } = useLikeProductStore();
-  console.log("zzz => ", product.isLike);
+  console.log("zzz => ", product.brandImg);
   const router = useRouter();
   return (
     <div
@@ -57,7 +57,7 @@ export default function ProductItem({ product, date = "", state = "" }: Props) {
           <HeartNotFillIcon />
         </div>
       )}
-      <img src={product.brandImg} alt="brand" className={styles["brand-img"]} />
+      {product.brandImg && <img src={product.brandImg} alt="brand" className={styles["brand-img"]} />}
       {product.viewCount && <p className={styles["view-count"]}>조회수 {product.viewCount}</p>}
       <div className={styles["content-wrap"]}>
         <img src={product.productImg} alt="product" className={styles["product-img"]} />

@@ -16,7 +16,7 @@ export default function Modal({ isOpen, onClose, contentText, btnText, btnClick 
   return (
     <>
       {isOpen && (
-        <section className={styles["modal"]}>
+        <section className={styles["modal"]} onClick={(e) => e.stopPropagation()}>
           <section className={styles["modal-content"]}>
             <div className={styles["close-icon-wrap"]} onClick={() => onClose()}>
               <CloseIcon />

@@ -22,6 +22,8 @@ function ProductDetailContent() {
   const date = searchParams.get("date");
   const state = searchParams.get("state");
 
+  console.log("brandImg => ", brandImg);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isLikeOpen, setIsLikeOpen] = useState(false);
   const { addCart } = useCartProductStore();
@@ -51,7 +53,7 @@ function ProductDetailContent() {
         <p className={styles["image-count"]}>1 / 1</p>
       </div>
       <section className={styles["content-wrap"]}>
-        <img src={brandImg} alt="" className={styles["brand-img"]} />
+        {brandImg && <img src={brandImg} alt="" className={styles["brand-img"]} />}
         <div className={styles["product-name"]}>
           {productName}
           {state !== "미승인" && state !== "승인완료" && state !== "배송중" && state !== "배송완료" && (
