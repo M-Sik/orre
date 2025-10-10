@@ -6,4 +6,38 @@
     font-weight: 600;
     color: #151515;
   }
+  .sub-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #222222;
+  }
+  .info-wrap {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 14px;
+    color: #222222;
+    font-weight: 400;
+  }
+  .divider {
+    height: 1px;
+    width: 100%;
+    background-color: #bababa;
+    margin: 18px 0 18px 0;
+  }
+  .navigate-wrap {
+    display: flex;
+    flex-direction: column;
+    .navigate-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 16px;
+      font-weight: 500;
+      color: #222222;
+      padding: 18px 0;
+      border-bottom: 1px solid #f3f0e7;
+    }
+  }
 }
