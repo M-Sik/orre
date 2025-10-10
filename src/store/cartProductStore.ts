@@ -11,7 +11,7 @@ import HermesProductImage from "@/app/assets/images/carts/hermesProductImage.png
 
 interface Store {
   cartProducts: Product[];
-  // deleteLike: (productName: string) => void;
+  deleteCart: (productNames: string[]) => void;
   addCart: (product: Product) => void;
 }
 
@@ -39,10 +39,10 @@ const useCartProductStore = create<Store>()(
         },
       ],
 
-      //   deleteLike: (productName) =>
-      //     set((state) => ({
-      //       likeProducts: state.likeProducts.filter((item) => item.productName !== productName),
-      //     })),
+      deleteCart: (productNames) =>
+        set((state) => ({
+          cartProducts: state.cartProducts.filter((item) => !productNames.includes(item.productName)),
+        })),
 
       addCart: (product) =>
         set((state) => {

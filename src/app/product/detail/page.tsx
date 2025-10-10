@@ -1,10 +1,13 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import styles from "./page.module.scss";
 import Modal from "@/app/components/modals/Modal";
 import useCartProductStore from "@/store/cartProductStore";
+import HeartFillIcon from "@/app/assets/icons/HeartFillIcon";
+import HeartNotFillIcon from "@/app/assets/icons/HeartNotFillIcon";
+import useLikeProductStore from "@/store/likeProductStore";
 
 function ProductDetailContent() {
   const router = useRouter();
@@ -20,7 +23,21 @@ function ProductDetailContent() {
   const state = searchParams.get("state");
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isLikeOpen, setIsLikeOpen] = useState(false);
   const { addCart } = useCartProductStore();
+  const { deleteLike, addLike, likeProducts } = useLikeProductStore();
+
+  const [isLikeState, setIsLikeState] = useState<boolean | null>(
+    isLike === "true" ? true : isLike === "false" ? false : null
+  );
+
+  useEffect(() => {
+    if (likeProducts.some((item) => item.productName === productName)) {
+      setIsLikeState(true);
+    } else {
+      setIsLikeState(false);
+    }
+  }, []);
 
   return (
     <section className={styles["product-detail-page"]}>
@@ -31,7 +48,41 @@ function ProductDetailContent() {
       </div>
       <section className={styles["content-wrap"]}>
         <img src={brandImg} alt="" className={styles["brand-img"]} />
-        <p className={styles["product-name"]}>{productName}</p>
+        <div className={styles["product-name"]}>
+          {productName}
+          {state !== "미승인" && state !== "승인완료" && state !== "배송중" && state !== "배송완료" && (
+            <div className={styles["heart-icon-wrap"]}>
+              {isLikeState === true ? (
+                <div
+                  onClick={() => {
+                    deleteLike(productName);
+                    setIsLikeState(false);
+                  }}
+                >
+                  <HeartFillIcon />
+                </div>
+              ) : (
+                <div
+                  onClick={() => {
+                    addLike({
+                      brandImg,
+                      productImg,
+                      productName,
+                      productPrice,
+                      content,
+                      viewCount,
+                      isLike: null,
+                    });
+                    setIsLikeState(true);
+                    setIsLikeOpen(true);
+                  }}
+                >
+                  <HeartNotFillIcon />
+                </div>
+              )}
+            </div>
+          )}
+        </div>
         <p className={styles["product-content"]}>{content}</p>
         <p className={styles["product-price"]}>{productPrice}</p>
         {date && state && (
@@ -101,6 +152,13 @@ function ProductDetailContent() {
         contentText={`장바구니에 해당 주얼리가\n담겼습니다.`}
         btnText="장바구니 내역 보기"
         btnClick={() => router.push("/my-page/cart")}
+      />
+      <Modal
+        isOpen={isLikeOpen}
+        onClose={() => setIsLikeOpen(false)}
+        contentText={`좋아요가 완료되었습니다.`}
+        btnText="좋아요 내역 보기"
+        btnClick={() => router.push("/my-page/like")}
       />
     </section>
   );
