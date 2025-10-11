@@ -12,7 +12,7 @@ export default function MypageLikePage() {
       <p className={styles["title"]}>좋아요</p>
       <div className={styles["list-wrap"]}>
         {likeProducts.map((item, idx) => (
-          <ProductItem key={idx} product={item} />
+          <ProductItem key={item.productName} product={item} />
         ))}
       </div>
     </section>

@@ -1,12 +1,13 @@
 "use client";
 
 import { Product } from "@/types";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./productItem.module.scss";
 import { useRouter } from "next/navigation";
 import HeartFillIcon from "@/app/assets/icons/HeartFillIcon";
 import HeartNotFillIcon from "@/app/assets/icons/HeartNotFillIcon";
 import useLikeProductStore from "@/store/likeProductStore";
+import Modal from "../modals/Modal";
 
 type Props = {
   product: Product;
@@ -16,8 +17,28 @@ type Props = {
 
 export default function ProductItem({ product, date = "", state = "" }: Props) {
   const { deleteLike, addLike } = useLikeProductStore();
+  const likeProducts = useLikeProductStore((state) => state.likeProducts);
   console.log("zzz => ", product.brandImg);
   const router = useRouter();
+
+  const [isLikeState, setIsLikeState] = useState<boolean | null>(product.isLike);
+  const [isLikeOpen, setIsLikeOpen] = useState(false);
+  useEffect(() => {
+    console.log("여기?0", product.productName);
+    console.log(likeProducts);
+    if (
+      likeProducts.some((item) => item.productName.replaceAll("\n", "") === product.productName.replaceAll("\n", ""))
+    ) {
+      console.log(
+        likeProducts.some((item) => item.productName.replaceAll("\n", "") === product.productName.replaceAll("\n", ""))
+      );
+      console.log("여기?1");
+      setIsLikeState(true);
+    } else {
+      console.log("여기?2");
+      setIsLikeState(false);
+    }
+  }, []);
   return (
     <div
       className={styles["product-item"]}
@@ -35,23 +56,26 @@ export default function ProductItem({ product, date = "", state = "" }: Props) {
         router.push(`/product/detail?${params}`);
       }}
     >
-      {product.isLike != null && product.isLike && (
+      {product.isLike != null && isLikeState === true && (
         <div
           className={styles["heart-icon"]}
           onClick={(e) => {
             e.stopPropagation();
             deleteLike(product.productName);
+            setIsLikeState(false);
           }}
         >
           <HeartFillIcon />
         </div>
       )}
-      {product.isLike != null && !product.isLike && (
+      {product.isLike != null && isLikeState === false && (
         <div
           className={styles["heart-icon"]}
           onClick={(e) => {
             e.stopPropagation();
             addLike(product);
+            setIsLikeState(true);
+            setIsLikeOpen(true);
           }}
         >
           <HeartNotFillIcon />
@@ -67,6 +91,13 @@ export default function ProductItem({ product, date = "", state = "" }: Props) {
           <p className={styles["content-text"]}>{product.content}</p>
         </div>
       </div>
+      <Modal
+        isOpen={isLikeOpen}
+        onClose={() => setIsLikeOpen(false)}
+        contentText={`좋아요가 완료되었습니다.`}
+        btnText="좋아요 내역 보기"
+        btnClick={() => router.push("/my-page/like")}
+      />
     </div>
   );
 }
