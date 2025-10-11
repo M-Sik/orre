@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
+import React, { Suspense } from "react";
 import styles from "./page.module.scss";
 import TopImage from "../_image/jewelry-main-top-image.png";
 
@@ -94,7 +94,7 @@ const list = [
   },
 ];
 
-export default function AllList() {
+function AllListContent() {
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
   console.log("category => ", category);
@@ -125,5 +125,13 @@ export default function AllList() {
         />
       </div>
     </section>
+  );
+}
+
+export default function AllList() {
+  return (
+    <Suspense>
+      <AllListContent />
+    </Suspense>
   );
 }
