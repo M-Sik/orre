@@ -1,0 +1,17 @@
+.section4 {
+  background-color: #fffcf7;
+  padding: 90px 0 75px 0;
+  img {
+    width: 100%;
+  }
+  div {
+    display: flex;
+  }
+  .section4-btn-wrap {
+    margin-top: 44px;
+    padding: 0 20px;
+    .section4-btn {
+      cursor: pointer;
+    }
+  }
+}
