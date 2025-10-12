@@ -72,7 +72,7 @@ function Step3Content() {
       </div>
       <div className={styles["gold-weight-wrap"]}>
         <p>
-          금 중량 <span>*선택</span>
+          {selectGold === "기타" ? "기타 귀금속 및 광물" : "금 함량"} <span>*선택</span>
         </p>
         <input
           type="text"
