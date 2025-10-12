@@ -27,7 +27,7 @@ export default function Header() {
           }}
         />
       </div>
-      <img src={LogoIcon.src} alt="로고" className={styles["logo-icon"]} />
+      <img src={LogoIcon.src} alt="로고" className={styles["logo-icon"]} onClick={() => router.push("/")} />
       <div style={{ display: "flex", alignItems: "center" }}>
         <div style={{ display: "flex", position: "relative" }}>
           {cartProducts.length > 0 && (
