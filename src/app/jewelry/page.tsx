@@ -47,7 +47,7 @@ const newItems = [
     productImg: NewItem1.src,
     productName: `flexible cross ring`,
     productPrice: "180,000원",
-    content: `보증서 보유 \nB등급, 실착용 횟수 20회 이내`,
+    content: `보증서 보유, \nB등급, 실착용 횟수 20회 이내`,
     viewCount: "32",
     isLike: false,
     tag: "BEST",
@@ -66,7 +66,7 @@ const newItems = [
     productImg: NewItem3.src,
     productName: `Sapphire stone necklace`,
     productPrice: "540,000원",
-    content: `보증서`,
+    content: `보증서 보유`,
     viewCount: "215",
     isLike: false,
   },
@@ -75,7 +75,7 @@ const newItems = [
     productImg: NewItem4.src,
     productName: `Signature shiny earrings`,
     productPrice: "270,000원",
-    content: `보증서, 박스 보유  \nA등급, 실착용 횟수 8회 이내`,
+    content: `보증서, 박스 보유,  \nA등급, 실착용 횟수 8회 이내`,
     viewCount: "215",
     isLike: false,
     tag: "NEW",
@@ -88,7 +88,7 @@ const dailyItems = [
     productImg: DailyItem1.src,
     productName: `Basic gold earrings`,
     productPrice: "170,000원",
-    content: `보증서 보유 \nB등급, 실착용 횟수 20회 이내`,
+    content: `보증서 보유, \nB등급, 실착용 횟수 20회 이내`,
     viewCount: "32",
     isLike: false,
   },
@@ -97,7 +97,7 @@ const dailyItems = [
     productImg: DailyItem2.src,
     productName: `Peridot earrings`,
     productPrice: "180,000원",
-    content: `보증서, 박스 보유  \nA등급, 실착용 횟수 10회 이내`,
+    content: `보증서, 박스 보유,  \nA등급, 실착용 횟수 10회 이내`,
     viewCount: "215",
     isLike: false,
     tag: "BEST",
@@ -107,7 +107,7 @@ const dailyItems = [
     productImg: DailyItem3.src,
     productName: `Sapphire silver earrings`,
     productPrice: "540,000원",
-    content: `보증서 \nA등급`,
+    content: `보증서 보유, \nA등급`,
     viewCount: "215",
     isLike: false,
   },
@@ -116,7 +116,7 @@ const dailyItems = [
     productImg: DailyItem4.src,
     productName: `A unique silver ring`,
     productPrice: "270,000원",
-    content: `보증서, 박스 보유  \nA등급, 실착용 횟수 8회 이내`,
+    content: `보증서, 박스 보유,  \nA등급, 실착용 횟수 8회 이내`,
     viewCount: "215",
     isLike: false,
   },
@@ -182,7 +182,7 @@ export default function JewelryPage() {
               <ProductBigImageItem key={idx} product={item} />
             ))}
           </div>
-          <div className={styles["more-btn-wrap"]} style={{ marginBottom: "86px" }}>
+          <div className={styles["more-btn-wrap"]} style={{ paddingBottom: "86px" }}>
             <img
               src={MoreBtnImage.src}
               alt="more-btn"

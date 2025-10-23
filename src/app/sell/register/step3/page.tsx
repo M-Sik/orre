@@ -112,16 +112,16 @@ function Step3Content() {
       <div className={styles["brand-wrap"]}>
         <p>주얼리 브랜드</p>
         <div className={`${selectBrand === "전체" ? styles["active"] : ""}`} onClick={() => setSelectBrand("전체")}>
-          브랜드가 상관없거나 광범위하게 보고싶어요{" "}
+          브랜드 없어요
         </div>
         <div
           className={`${selectBrand !== "전체" ? styles["active"] : ""}`}
-          onClick={() => setSelectBrand("원하는 브랜드가 있어요")}
+          onClick={() => setSelectBrand("브랜드 있어요")}
         >
-          원하는 브랜드가 있어요{" "}
+          브랜드 있어요
         </div>
       </div>
-      {selectBrand === "원하는 브랜드가 있어요" && (
+      {selectBrand === "브랜드 있어요" && (
         <div className={styles["brand-select-wrap"]}>
           <div className={styles["search-icon"]}>
             <SearchIcon />

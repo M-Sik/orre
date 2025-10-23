@@ -89,7 +89,7 @@ function ProductDetailContent() {
             </div>
           )}
         </div>
-        <p className={styles["product-content"]}>{content}</p>
+        <p className={styles["product-content"]}>{content.replaceAll("Q", ",")}</p>
         <p className={styles["product-price"]}>{productPrice}</p>
         {date && state && (
           <p className={styles["date-state"]}>

@@ -88,7 +88,7 @@ export default function ProductItem({ product, date = "", state = "" }: Props) {
         <div className={styles["content"]}>
           <p className={styles["product-name"]}>{product.productName}</p>
           <p className={styles["product-price"]}>{product.productPrice}</p>
-          <p className={styles["content-text"]}>{product.content}</p>
+          <p className={styles["content-text"]}>{product.content.replaceAll("Q", "")}</p>
         </div>
       </div>
       <Modal

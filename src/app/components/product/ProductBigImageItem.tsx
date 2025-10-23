@@ -81,7 +81,7 @@ export default function ProductBigImageItem({ product }: Props) {
         )}
       </div>
       <p className={styles["product-name"]}>{product.productName}</p>
-      <p className={styles["product-price"]}>W{product.productPrice.replaceAll("원", "")}</p>
+      <p className={styles["product-price"]}>₩{product.productPrice.replaceAll("원", "")}</p>
       <Modal
         isOpen={isLikeOpen}
         onClose={() => setIsLikeOpen(false)}

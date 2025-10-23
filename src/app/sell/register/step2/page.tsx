@@ -14,13 +14,14 @@ function Step2Content() {
   const router = useRouter();
 
   const [selectGold, setSelectGold] = useState<string>("14K");
+  const [placeholder, setPlaceholder] = useState<string>("중량을 입력해 주세요.");
   const [goldWeight, setGoldWeight] = useState<string>("");
 
   const handleBtnClick = () => {
-    if (!goldWeight) {
-      alert("금 중량을 입력해 주세요.");
-      return;
-    }
+    // if (!goldWeight) {
+    //   alert("금 중량을 입력해 주세요.");
+    //   return;
+    // }
     router.push(`/sell/register/step3`);
   };
 
@@ -46,13 +47,19 @@ function Step2Content() {
           src={Gold14KImg.src}
           alt="14k"
           className={`${selectGold === "14K" ? styles["active"] : ""}`}
-          onClick={() => setSelectGold("14K")}
+          onClick={() => {
+            setSelectGold("14K");
+            setPlaceholder("중량을 입력해 주세요.");
+          }}
         />
         <img
           src={Gold18KImg.src}
           alt="18k"
           className={`${selectGold === "18K" ? styles["active"] : ""}`}
-          onClick={() => setSelectGold("18K")}
+          onClick={() => {
+            setSelectGold("18K");
+            setPlaceholder("중량을 입력해 주세요.");
+          }}
         />
       </div>
       <div className={styles["gold-wrap"]}>
@@ -60,28 +67,34 @@ function Step2Content() {
           src={Gold24KImg.src}
           alt="24k"
           className={`${selectGold === "24K" ? styles["active"] : ""}`}
-          onClick={() => setSelectGold("24K")}
+          onClick={() => {
+            setSelectGold("24K");
+            setPlaceholder("중량을 입력해 주세요.");
+          }}
         />
         <img
           src={EtcImg.src}
           alt="etc"
           className={`${selectGold === "기타" ? styles["active"] : ""}`}
-          onClick={() => setSelectGold("기타")}
+          onClick={() => {
+            setSelectGold("기타");
+            setPlaceholder("은, 다이아몬드 등 자유롭게 작성해 주세요.");
+          }}
         />
       </div>
       <div className={styles["gold-weight-wrap"]}>
         {selectGold === "기타" ? (
-          <p>
-            기타 귀금속 및 광물 <span>*은, 다이아몬드 등 자유롭게 작성</span>{" "}
-          </p>
+          <p>기타 귀금속 및 광물</p>
         ) : (
-          <p>금 함량</p>
+          <p>
+            금 중량(g) <span>* 알고 있을 시 숫자만 기입</span>
+          </p>
         )}
         <input
           type="text"
           value={goldWeight}
           onChange={(e) => setGoldWeight(e.target.value)}
-          placeholder="함량을 입력해 주세요."
+          placeholder={placeholder}
         />
       </div>
       <button className={styles["select-button"]} onClick={() => handleBtnClick()}>

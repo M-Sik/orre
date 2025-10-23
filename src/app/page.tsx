@@ -42,13 +42,13 @@ export default function HomePage() {
         <div className={styles["price-wrap"]}>
           <p className={styles["unit"]}>1g</p>
           <p className={styles["price"]}>
-            151,900<span style={{ fontSize: "24px", marginLeft: "2px" }}>원</span>
+            210,500<span style={{ fontSize: "24px", marginLeft: "2px" }}>원</span>
           </p>
         </div>
         <div className={styles["price-wrap"]}>
           <p className={styles["done-unit"]}>1돈</p>
           <p className={styles["done-price"]}>
-            569,625<span style={{ fontSize: "24px", marginLeft: "2px" }}>원</span>
+            789,375<span style={{ fontSize: "24px", marginLeft: "2px" }}>원</span>
           </p>
         </div>
         <div className={styles["change-price-wrap"]}>

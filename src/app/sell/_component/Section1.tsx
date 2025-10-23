@@ -19,7 +19,7 @@ export default function Section1() {
           각종 사기가 넘쳐나는 현물 사기, <br />
           오레에서 안전하고 가치있게 거래해 보세요.
         </p>
-        <p className={styles["open-event"]}>OPEN ENENT</p>
+        <p className={styles["open-event"]}>OPEN EVENT</p>
       </div>
       <div className={styles["tab-wrap"]}>
         <button
